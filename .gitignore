@@ -1,2 +1,5 @@
 *.bat
 *.idea
+glove*.txt
+glove*.zip
+/sentiment_analysis/reference/text_classification_deeplearning/dataset.csv
