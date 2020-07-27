@@ -11,8 +11,10 @@ def initially_clean(df):
 
 
 def clean_ascii_symbols(df, col):
+    _df = df.copy()
     for s in symbol_list:
-        df[col] = df[col].str.replace(s, '')
+        _df[col] = df[col].str.replace(s, '')
+    return _df
 
 
 def clean_blank_rows(df, col):
