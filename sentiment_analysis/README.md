@@ -16,11 +16,5 @@
   
 *preprocess.py - 整理資料前處理用到的 function*
 
-<<<<<<< HEAD
-*sol1.py : 整理特徵工程解決方向 1會用到的 function，詳見 [Document](https://docs.google.com/document/d/1Hrj9KQOqlmSbk-LthMqS4LfY8PdOsLwg5jnsTby3xaM/edit?usp=sharing)*
-
-blablablablablablablabla
-=======
 *sol1.py - 整理特徵工程解決方向 1會用到的 function，詳見 [Document](https://docs.google.com/document/d/1Hrj9KQOqlmSbk-LthMqS4LfY8PdOsLwg5jnsTby3xaM/edit?usp=sharing)*
 
->>>>>>> 245565a30aecb21f8ee52205a5a0922ac049cc5d
