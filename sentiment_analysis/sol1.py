@@ -4,32 +4,37 @@ import pandas as pd
 import re
 from spellchecker import SpellChecker
 
-def replaceTwoOrMore(s):
-    #look for 2 or more repetitions of character and replace with the character itself
-    pattern = re.compile(r"(.)\1{1,}", re.DOTALL)
+
+def trim_letters(s):
+    # look for 2 or more repetitions of character and replace with the character itself
+    pattern = re.compile(r"([a-zA-z_])\1{2,}", re.DOTALL)
     return pattern.sub(r"\1\1", s)
 
+
 def detect_language(df):
-	x = []
+	langs = []
 	for index, row in df.iterrows():
 		try:
-			x.append = detect(row['review'])
+			langs.append(detect(row['review']))
 		except Exception:
 			pass
-	df['language']= x
+	df['language'] = langs
 	return df
 
-def spell_checker(word_list):
+
+def spell_checker(word_list, lang):
 	spell = SpellChecker()
 	misspelled = spell.unknown(word_list)
-	#misspelled = spell.unknown(['Let','rexomend', 'us', 'wlak','on','the','gooood','smille'])
+	# misspelled = spell.unknown(['Let','rexomend', 'us', 'wlak','on','the','gooood','smille'])
 	for word in misspelled:
-	    # Get the one `most likely` answer
-	    word_list[word_list.index(word)] = spell.correction(word)
+		# Get the one `most likely` answer
+		word_list[word_list.index(word)] = spell.correction(word, src=lang)
 	return word_list
 
-# stopwordList	
-with open('en.json') as f:
-    stopword_en = json.load(f)
-with open('id.json') as f:
-    stopword_id = json.load(f)
+
+# stopwordList
+with open('data/lib/en.json') as f:
+	stopword_en = json.load(f)
+
+with open('data/lib/id.json') as f:
+	stopword_id = json.load(f)
