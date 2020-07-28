@@ -17,3 +17,5 @@
 *preprocess.py : 整理資料前處理用到的 function*
 
 *sol1.py : 整理特徵工程解決方向 1會用到的 function，詳見 [Document](https://docs.google.com/document/d/1Hrj9KQOqlmSbk-LthMqS4LfY8PdOsLwg5jnsTby3xaM/edit?usp=sharing)*
+
+blablablablablablablabla
