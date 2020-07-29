@@ -5,16 +5,20 @@ symbol_list.extend([chr(i) for i in range(91, 97)])
 symbol_list.extend([chr(i) for i in range(123, 127)])
 
 
-def initially_clean(df):
-    df.drop('review_id', axis=1, inplace=True)
-    df['review'] = df['review'].str.strip().str.lower()
+def initially_clean(df, col='review'):
+    df[col] = df[col].str.strip().str.lower()
 
 
+# 不知道為什麼沒辦法清除 '.'
 def clean_ascii_symbols(df, col):
-    _df = df.copy()
     for s in symbol_list:
-        _df[col] = df[col].str.replace(s, '')
-    return _df
+        df[col] = df[col].str.replace(s, '')
+    return df
+
+
+# The strongest method to clean all symbols include unicode
+def clean_symbols(df, col):
+    df[col] = df[col].str.replace(r'[^\w\s\r\n]', '')
 
 
 def clean_blank_rows(df, col):

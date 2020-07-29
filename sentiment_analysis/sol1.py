@@ -15,20 +15,23 @@ def detect_language(df):
 	langs = []
 	for index, row in df.iterrows():
 		try:
-			langs.append(detect(row['review']))
+			if detect(row['review']) != 'id':
+				x.append('en')
+			else:
+				x.append('id')
 		except Exception:
-			pass
-	df['language'] = langs
+			langs.append('en')
+	df['language']= langs
 	return df
 
 
-def spell_checker(word_list, lang):
+def spell_checker(word_list):
 	spell = SpellChecker()
 	misspelled = spell.unknown(word_list)
 	# misspelled = spell.unknown(['Let','rexomend', 'us', 'wlak','on','the','gooood','smille'])
 	for word in misspelled:
 		# Get the one `most likely` answer
-		word_list[word_list.index(word)] = spell.correction(word, src=lang)
+		word_list[word_list.index(word)] = spell.correction(word)
 	return word_list
 
 
