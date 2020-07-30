@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 
 import emoji
-import emojis
 
 import nltk
 # nltk.download('stopwords') 沒下載過的話把註解拿掉
@@ -34,7 +33,7 @@ def widen_emoji(text):
 
 def emoji_transform(text):
     text = widen_emoji(text)
-    return emojis.decode(text)
+    return emojis.demoji(text)
 
 
 def check_contractions(df, col='review'):

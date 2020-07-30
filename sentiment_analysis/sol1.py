@@ -15,10 +15,10 @@ def detect_language(df):
 	langs = []
 	for index, row in df.iterrows():
 		try:
-			if detect(row['review']) != 'id':
-				x.append('en')
-			else:
+			if detect(row['review']) != 'en':
 				x.append('id')
+			else:
+				x.append('en')
 		except Exception:
 			langs.append('en')
 	df['language']= langs
