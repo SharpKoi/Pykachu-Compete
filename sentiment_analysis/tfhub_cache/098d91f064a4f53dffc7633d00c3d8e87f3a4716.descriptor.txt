@@ -1,0 +1,3 @@
+Module: https://tfhub.dev/google/albert_base/2
+Download Time: 2020-07-31 23:02:55.610514
+Downloader Hostname: LAPTOP-E60AQNFE (PID:7160)

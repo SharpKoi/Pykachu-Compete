@@ -33,7 +33,7 @@ def widen_emoji(text):
 
 def emoji_transform(text):
     text = widen_emoji(text)
-    return emojis.demoji(text)
+    return emoji.demojize(text)
 
 
 def check_contractions(df, col='review'):
@@ -139,18 +139,18 @@ class FittingData:
     #   fitting_sequences
     #   word_id_dict
 
-    def __init__(self, df: pd.DataFrame, training_col, label_col, max_words, seq_len, fitting_size=1.0):
+    def __init__(self, df: pd.DataFrame, training_col, label_col, max_vocab, seq_len, fitting_size=1.0):
         fitting_texts = df[training_col].tolist()
         self.fitting_labels = df[label_col].tolist()
 
-        if fitting_size is not 1.0:
+        if fitting_size != 1.0:
             _fitting_size = int(len(df) * fitting_size)
             random_index = np.random.choice([i for i in range(len(df))], _fitting_size, replace=False)
 
             fitting_texts = np.array(fitting_texts)[random_index].tolist()
             self.fitting_labels = np.array(self.fitting_labels)[random_index].tolist()
 
-        tokenizer = Tokenizer(num_words=max_words)
+        tokenizer = Tokenizer(num_words=max_vocab)
         tokenizer.fit_on_texts(fitting_texts)
         self.fitting_sequences = tokenizer.texts_to_sequences(fitting_texts)
         self.fitting_sequences = pad_sequences(self.fitting_sequences, padding='post', maxlen=seq_len)
