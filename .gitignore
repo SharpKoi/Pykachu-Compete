@@ -8,3 +8,4 @@
 /**/__pycache__
 /sentiment_analysis/temp/**
 /sentiment_analysis/example/**
+/sentiment_analysis/tfhub_cache/**
